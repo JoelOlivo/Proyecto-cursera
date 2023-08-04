@@ -23,6 +23,20 @@
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Iniciar sesión</p>
+      <?php
+      
+      ?>
+
+      <table>
+        <thead>
+          <tr>
+            <th>holi</th>
+            <th>holi</th>
+          </tr>
+        </thead>
+        <tbody id="prueba">
+        </tbody>
+      </table>
       <form method="post">
         <div class="input-group mb-3">
           <input type="email" class="form-control" placeholder="Email" name="email">
@@ -56,5 +70,6 @@
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
+<script src="../Js/prueba.js"></script>
 </body>
 </html>
