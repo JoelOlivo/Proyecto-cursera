@@ -23,23 +23,9 @@
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Iniciar sesión</p>
-      <?php
-      
-      ?>
-
-      <table>
-        <thead>
-          <tr>
-            <th>holi</th>
-            <th>holi</th>
-          </tr>
-        </thead>
-        <tbody id="prueba">
-        </tbody>
-      </table>
-      <form method="post">
+      <form id="frmLogin">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email" name="email">
+          <input type="email" class="form-control" placeholder="Email" name="txtemail" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -47,7 +33,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password" name="password">
+          <input type="password" class="form-control" placeholder="Password" name="txtpassword" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -55,7 +41,7 @@
           </div>
         </div>
         <div class="col-12">
-          <button type="submit" class="btn btn-primary btn-block" name="login">Iniciar sesión</button>
+          <button type="button" class="btn btn-primary btn-block" id="btnlogin">Iniciar sesión</button>
         </div>
       </form>
     </div>
@@ -70,6 +56,7 @@
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
-<script src="../Js/prueba.js"></script>
+<!-- <script src="../Js/prueba.js"></script> -->
+<script src="../Js/Login.js"></script>
 </body>
 </html>

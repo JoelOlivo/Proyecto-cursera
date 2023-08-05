@@ -1,9 +1,19 @@
+<?php
+session_start();
+if (isset($_SESSION['id_usuario'])) {
+  echo '<script>alert("bienvenido guapo");</script>';
+}else {
+  echo '<script>alert("chau :v");
+  window.location.href = "login.php";
+  </script>';
+}
+?>
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+    <a href="../View/index.php" class="brand-link">
+      <img src="../../dist/img/coursera-logo.png" alt="Cursera Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Cursera</span>
     </a>
 
     <!-- Sidebar -->
@@ -14,19 +24,7 @@
           <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
-        </div>
-      </div>
-
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
+          <a href="#" class="d-block"><?php echo $_SESSION['nombre']?></a>
         </div>
       </div>
 
@@ -36,7 +34,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="./index.html" class="nav-link">
+            <a href="../View/index.php" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -44,11 +42,34 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <a href="../View/Estadisticas.php" class="nav-link">
+              <i class="nav-icon fas fa-chart-bar"></i>
               <p>
-                Widgets
-                <span class="right badge badge-danger">New</span>
+                Estadísticas
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../View/Usuarios.php" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Usuarios
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../View/Cursos.php" class="nav-link">
+              <i class="nav-icon fas fa-chalkboard"></i>
+              <p>
+                Cursos
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../View/Ventas.php" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Ventas
               </p>
             </a>
           </li>
@@ -62,13 +83,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/forms/general.html" class="nav-link">
+                <a href="../View/General.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>General Elements</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/forms/advanced.html" class="nav-link">
+                <a href="../View/Advanced.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Advanced Elements</p>
                 </a>
@@ -85,7 +106,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
+                <a href="../View/Data.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>DataTables</p>
                 </a>
@@ -103,13 +124,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/examples/profile.html" class="nav-link">
+                <a href="../View/Profile.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Profile</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/e-commerce.html" class="nav-link">
+                <a href="../View/Ecommerce.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>E-commerce</p>
                 </a>
@@ -136,25 +157,25 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="pages/examples/login.html" class="nav-link">
+                    <a href="../View/Login.php" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Login v1</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/examples/register.html" class="nav-link">
+                    <a href="../View/Register.php" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Register v1</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/examples/forgot-password.html" class="nav-link">
+                    <a href="../View/ForgotPassword.php" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Forgot Password v1</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/examples/recover-password.html" class="nav-link">
+                    <a href="../View/RecoverPassword.php" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Recover Password v1</p>
                     </a>
@@ -162,7 +183,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/404.html" class="nav-link">
+                <a href="../View/404.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Error 404</p>
                 </a>
