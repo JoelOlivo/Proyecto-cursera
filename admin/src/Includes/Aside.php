@@ -50,7 +50,7 @@ if (isset($_SESSION['id_usuario'])) {
             </a>
           </li>
           <li class="nav-item">
-            <a href="../View/Usuarios.php" class="nav-link">
+            <a href="../View/Usuario.php" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Usuarios

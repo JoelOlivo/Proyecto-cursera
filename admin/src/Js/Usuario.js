@@ -1,13 +1,12 @@
 $(document).ready(function(){
-    prueba();
+    cargarUsuarios();
     //código a ejecutar cuando el DOM está listo para recibir instrucciones.
 });
 
-function prueba() {
-    // alert("jeje");
+function cargarUsuarios() {
 
-    $.post("../Ajax/pruebaAjax.php?op=listar", function (r) {
+    $.post("../Ajax/UsuarioAjax.php?op=listar", function (r) {
         console.log(r);
-        $("#prueba").html(r);
+        $("#tblUsuarios").html(r);
     });
 }
