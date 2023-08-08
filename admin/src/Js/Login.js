@@ -13,8 +13,6 @@ function iniciarSesion() {
         }else{
             alert('contraseña o correo incorrecto bobo hpta');
         }
-
-        // alert(r);
     });
 
     

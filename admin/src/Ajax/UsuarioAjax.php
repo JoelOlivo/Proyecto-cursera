@@ -6,7 +6,7 @@ $op = $_GET["op"];
 
 switch ($op) {
     case 'listar':
-        $row = $obj->mostrarUsuarios();
+        $row = $obj->mostrarUsuario();
     
         foreach ($row as $key => $value) {
             echo ' 
@@ -21,6 +21,27 @@ switch ($op) {
             </tr>';
         }
 
+        break;
+
+    case 'guardarUsuario':
+
+        $datos = [
+            'NombreUno'=> $_POST['NombreUno'],
+            'NombreDos'=> $_POST['NombreDos'],
+            'ApellidoUno'=> $_POST['ApellidoUno'],
+            'ApellidoDos'=> $_POST['ApellidoDos'],
+            'Email'=> $_POST['Email'],
+            'Contrasenia'=> $_POST['Contrasenia'],
+            'Cedula'=> $_POST['Cedula'],
+            'Celular'=> $_POST['Celular'],
+            'Pais'=> $_POST['Pais'],
+            'Ciudad'=> $_POST['Ciudad'],
+            'CodigoPostal'=> $_POST['CodigoPostal'],
+            'Direccion'=> $_POST['Direccion'],
+            'Rol'=> $_POST['Rol']
+        ];
+
+        $row = $obj->guardarUsuario($datos);
         break;
 }
 

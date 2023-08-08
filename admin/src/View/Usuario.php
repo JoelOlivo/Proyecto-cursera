@@ -54,7 +54,7 @@ include '../Includes/Aside.php';
               <!-- /.card-header -->
               <div class="card-body">
                 <div class="col-md-12" align="right">
-                    <button type="button" class="btn btn-info"><a style="text-decoration:none; color: white;" href="../View/CrearUsuario.php"><i class="fa fa-plus"></i> Agregar Usuario</a></button>
+                    <button type="button" class="btn btn-info"><a style="text-decoration:none; color: white;" href="CrearUsuario.php"><i class="fa fa-plus"></i> Agregar Usuario</a></button>
                 </div><br>
                 <div class="col-md-12">
                     <table id="" class="table table-bordered table-hover">

@@ -5,3 +5,4 @@
       <b>Version</b> 3.2.0
     </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
