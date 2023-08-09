@@ -73,7 +73,7 @@ function editarUsuario() {
             showHideTransition: 'fade',
             position: 'top-right',
             icon: 'error'
-        })
+        });
     }else{
         $.post("../Ajax/UsuarioAjax.php?op=editarUsuario", {datos: datos, idUsuario: idUsuario}, function (r) {
             // console.log(r);

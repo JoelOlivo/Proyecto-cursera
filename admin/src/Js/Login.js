@@ -22,15 +22,17 @@ function iniciarSesion() {
 function cerrarSesion() {
 
     $.post("../Ajax/LoginAjax.php?op=cerrarSesion", {cerrarSesion: true}, function (r) {
-        console.log(r);
+        // console.log(r);
         if (r == 'ok') {
-            console.log("sesion cerrada capo");
             window.location.href = '../View/Login.php';
         } else {
-            console.log("sesion no cerrada capo :(");
+            $.toast({
+                heading: 'Error',
+                text: 'No se pudo cerrar la sesión',
+                showHideTransition: 'fade',
+                position: 'top-right',
+                icon: 'error'
+            });
         }
     });
-    // console.log("holixd");
-
-    // cerrarSesion
 }
