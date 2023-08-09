@@ -32,22 +32,19 @@
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
             <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
           </a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
             <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+          <button type="button" id="btnCerrarSesion" class="dropdown-item text-danger">
+            <i class="fas fa-door-closed mr-2"></i> Cerrar sesión</button>
+          <!-- <button onclick="cerrarSesion();" class="dropdown-item text-danger"><i class="fas fa-door-closed mr-2"></i> Cerrar sesión
+          </button> -->
         </div>
       </li>
     </ul>
   </nav>
+  <!-- <script src="../Js/Login.js"></script> -->
   <!-- /.navbar -->

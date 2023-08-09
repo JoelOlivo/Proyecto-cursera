@@ -1,5 +1,7 @@
-$(document).ready(function () {
+$(document).ready(function() {
     $("#btnlogin").click(iniciarSesion);
+    $("#btnCerrarSesion").click(cerrarSesion);
+    
 });
 
 function iniciarSesion() {
@@ -13,9 +15,10 @@ function iniciarSesion() {
         }else{
             alert('contraseña o correo incorrecto bobo hpta');
         }
-    });
-
-    
+    });  
     // alert(datos);
+}
 
+function cerrarSesion() {
+    console.log("holixd");
 }

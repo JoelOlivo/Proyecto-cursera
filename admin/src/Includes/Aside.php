@@ -1,13 +1,3 @@
-<?php
-session_start();
-if (isset($_SESSION['id_usuario'])) {
-  echo '<script>alert("bienvenido guapo");</script>';
-}else {
-  echo '<script>alert("chau :v");
-  window.location.href = "login.php";
-  </script>';
-}
-?>
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
