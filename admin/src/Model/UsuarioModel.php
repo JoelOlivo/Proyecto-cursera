@@ -58,6 +58,69 @@ class Usuario{
 
         $conexion->close();
     }
+
+    public static function cargarUsuario($id){
+        $conexion = new Conexion;
+        $conexion = $conexion->conectar();
+
+        $query = "SELECT * FROM USUARIO WHERE id_usuario = '$id'";
+        $sql = mysqli_query($conexion, $query);
+        $row = mysqli_fetch_assoc($sql);
+        $conexion->close();
+        return $row;
+        // var_dump($row);
+
+    }
+
+    public static function editarUsuario($datos, $id){
+        $conexion = new Conexion;
+        $conexion = $conexion->conectar();
+
+        $primerNombre = $datos['NombreUno'];
+        $segundoNombre = $datos['NombreDos'];
+        $primerApellido = $datos['ApellidoUno'];
+        $segundoApellido = $datos['ApellidoDos'];
+        $email = $datos['Email'];
+        $contrasenia = $datos['Contrasenia'];
+        $cedula = $datos['Cedula'];
+        $celular = $datos['Celular'];
+        $pais = $datos['Pais'];
+        $ciudad = $datos['Ciudad'];
+        $codigoPostal = $datos['CodigoPostal'];
+        $direccion = $datos['Direccion'];
+        $fechaModificacion = date("Y-m-d h:i:s");
+        $rol = $datos['Rol'];
+
+        $query = "UPDATE USUARIO SET primer_nombre = '$primerNombre', segundo_nombre = '$segundoNombre', primer_apellido = '$primerApellido',segundo_apellido = '$segundoApellido', cedula = '$cedula', email = '$email', contrasenia = '$contrasenia', celular = '$celular', pais = '$pais', ciudad = '$ciudad', codigo_postal = '$codigoPostal', direccion = '$direccion', fecha_modificacion = '$fechaModificacion', id_rol = '$rol' WHERE id_usuario = $id";
+
+        $sql = mysqli_query($conexion, $query);
+
+        if ($sql) {
+            echo "ok";
+        }else {
+            echo "error";
+        }
+
+        $conexion->close();
+
+        // var_dump($datos, $id);
+    }
+
+    public static function eliminarUsuario($id){
+        $conexion = new Conexion;
+        $conexion = $conexion->conectar();
+
+        $query = "DELETE FROM USUARIO WHERE id_usuario = '$id'";
+        $sql = mysqli_query($conexion, $query);
+
+        if ($sql) {
+            echo "ok";
+        }else {
+            echo "error";
+        }
+
+        $conexion->close();
+    }
 }
 
 ?>

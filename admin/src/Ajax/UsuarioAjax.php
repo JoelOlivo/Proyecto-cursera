@@ -15,8 +15,8 @@ switch ($op) {
                 <td>'. $value['nombre_completo'] .'</td>
                 <td>'. $value['email'] .'</td>
                 <td>
-                    <button type="button" class="btn btn-primary"><a style="text-decoration:none; color: white;" href="../View/EditarUsuario.php?id='. $value['id_usuario'] .'"><i class="fas fa-edit"></i> Editar</a></button>
-                    <button type="button" class="btn btn-danger btnEliminar"><i class="fas fa-trash"></i> Eliminar</button>
+                    <button type="button" class="btn btn-primary"><a style="text-decoration:none; color: white;" href="../View/EditarUsuario.php?id='. $value['id_usuario'] .'"><i class="fas fa-edit"></i> Editar</a></button>    
+                    <button type="button" class="btn btn-danger btnEliminar" onclick="eliminarUsuario('. $value['id_usuario'] .');"><i class="fas fa-trash"></i> Eliminar</button>
                 </td>
             </tr>';
         }
@@ -43,6 +43,25 @@ switch ($op) {
 
         $row = $obj->guardarUsuario($datos);
         break;
+
+        case 'cargarUsuario':
+            $id = $_GET['id'];
+            $row = $obj->cargarUsuario($id);
+            break;
+
+        case 'editarUsuario':
+
+            $id = $_POST["idUsuario"];
+            parse_str($_POST['datos'], $datosArray);
+            $row = $obj->editarUsuario($datosArray, $id);
+                
+            break;
+
+        case 'eliminarUsuario':
+            $id = $_POST['idUsuario'];
+            $row = $obj->eliminarUsuario($id);
+            // var_dump($id);
+            break;
 }
 
 
