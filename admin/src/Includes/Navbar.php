@@ -40,11 +40,8 @@
           <div class="dropdown-divider"></div>
           <button type="button" id="btnCerrarSesion" class="dropdown-item text-danger">
             <i class="fas fa-door-closed mr-2"></i> Cerrar sesión</button>
-          <!-- <button onclick="cerrarSesion();" class="dropdown-item text-danger"><i class="fas fa-door-closed mr-2"></i> Cerrar sesión
-          </button> -->
         </div>
       </li>
     </ul>
   </nav>
-  <!-- <script src="../Js/Login.js"></script> -->
   <!-- /.navbar -->

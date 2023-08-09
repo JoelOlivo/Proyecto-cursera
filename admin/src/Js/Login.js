@@ -9,7 +9,7 @@ function iniciarSesion() {
     var datos = $("#frmLogin").serialize();
     // console.log(datos);
 
-    $.post("../Ajax/LoginAjax.php", datos, function (r) {
+    $.post("../Ajax/LoginAjax.php?op=iniciarSesion", datos, function (r) {
         if (r == 'ok') {    
             window.location = 'index.php';
         }else{
@@ -20,5 +20,17 @@ function iniciarSesion() {
 }
 
 function cerrarSesion() {
-    console.log("holixd");
+
+    $.post("../Ajax/LoginAjax.php?op=cerrarSesion", {cerrarSesion: true}, function (r) {
+        console.log(r);
+        if (r == 'ok') {
+            console.log("sesion cerrada capo");
+            window.location.href = '../View/Login.php';
+        } else {
+            console.log("sesion no cerrada capo :(");
+        }
+    });
+    // console.log("holixd");
+
+    // cerrarSesion
 }

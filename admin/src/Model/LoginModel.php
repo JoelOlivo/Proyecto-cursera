@@ -34,6 +34,11 @@ class Login{
 
         $conexion->close();
     }
+
+    public static function cerrarSesion(){
+        session_start();
+        session_destroy();
+    }
 }
 
 ?>
