@@ -1,31 +1,29 @@
 $(document).ready(function(){
     //código a ejecutar cuando el DOM está listo para recibir instrucciones.
-    listarUsuario();
-    $("#btnCrear").click(guardarUsuario);
-    $("#btnEditar").click(editarUsuario);
+    listarCurso();
+    $("#btnCrear").click(guardarCurso);
+    $("#btnEditar").click(editarCurso);
     
 
-}); x
+});
 
-function listarUsuario() {
+function listarCurso() {
 
-    $.post("../Ajax/UsuarioAjax.php?op=listar", function (r) {
+    $.post("../Ajax/CursoAjax.php?op=listar", function (r) {
         // console.log(r);
-        $("#tblUsuarios").html(r);
+        $("#tblCursos").html(r);
     });
 }
 
-function guardarUsuario() {
+function guardarCurso() {
 
-    var nombre = $("#txtNombreUno").val();
-    var apellido = $("#txtApellidoUno").val();
-    var email = $("#txtEmail").val();
-    var contrasenia = $("#txtContrasenia").val();
-    var rol = $("#slRol").val();
-    var datos = new FormData($("#frmCrearUsuario")[0]);
+    var nombre = $("#txtNombre").val();
+    var descripcion = $("#txtDescripcion").val();
+    var precio = $("#txtPrecio").val();
+    var foto = $("#fileMiniatura").val();
+    var datos = new FormData($("#frmCrearCurso")[0]);
 
-
-    if (nombre.trim() == '' || apellido.trim() == '' || email.trim() == '' || contrasenia.trim() == '' || rol == 0) {
+    if (nombre.trim() == '' || descripcion.trim() == '' || precio.trim() == '' || foto == '') {
         $.toast({
             heading: 'Error',
             text: 'Llenar los campos obligatorios. (*)',
@@ -37,7 +35,7 @@ function guardarUsuario() {
 
         $.ajax({
             method: 'post',
-            url: '../Ajax/UsuarioAjax.php?op=guardarUsuario',
+            url: '../Ajax/CursoAjax.php?op=guardarCurso',
             data: datos,
             cache: false,
             processData: false,
@@ -46,47 +44,35 @@ function guardarUsuario() {
                 if (e == 'ok') {
                 Swal.fire(
                     'Mensaje del sistema',
-                    'Usuario creado correctamente',
+                    'Curso agregado correctamente',
                     'success'
                 );
                 limpiarFormulario();
                 }else{
                     Swal.fire(
                         'Mensaje del sistema',
-                        'No se pudo crear el usuario',
+                        'No se pudo agregar el curso',
                         'error'
                     );
                 }
                 // console.log(e);
             }
-        });
+        });  
     }
 }
 
-function editarUsuario() {
+function editarCurso() {
 
-    var datos = new FormData($("#frmEditarUsuario")[0]);
-    var idUsuario = $("#idUsuario").val();
-    var nombre = $("#txtNombreUno").val();
-    var apellido = $("#txtApellidoUno").val();
-    var email = $("#txtEmail").val();
-    var contrasenia = $("#txtContrasenia").val();
-    var rol = $("#slRol").val();
+    var idCurso = $("#idCurso").val();
+    var nombre = $("#txtNombre").val();
+    var descripcion = $("#txtDescripcion").val();
+    var precio = $("#txtPrecio").val();
+    var foto = $("#fileFoto").val();
+    var datos = new FormData($("#frmCrearCurso")[0]);
 
-    // $("#fileFoto").change(function() {
-    //     var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i; // Extensiones permitidas: jpg, jpeg, png, gif
-    //     var fileInput = $(this)[0];
-    //     var selectedFile = fileInput.files[0];
-    //     if (!allowedExtensions.exec(selectedFile.name)) {
-    //         alert('Solo se permiten archivos de imagen con extensiones .jpg, .jpeg, .png, .gif');
-    //         $(this).val(""); // Vaciar el campo para que el usuario seleccione un archivo válido
-    //     }
-    // });
+    datos.append('idCurso', idCurso);
     
-
-    datos.append('idUsuario', idUsuario);
-
-    if (nombre.trim() == '' || apellido.trim() == '' || email.trim() == '' || contrasenia.trim() == '' || rol == 0) {
+    if (nombre.trim() == '' || descripcion.trim() == '' || precio.trim() == '') {
         $.toast({
             heading: 'Error',
             text: 'Llenar los campos obligatorios. (*)',
@@ -97,7 +83,7 @@ function editarUsuario() {
     }else{
         $.ajax({
             method: 'post',
-            url: '../Ajax/UsuarioAjax.php?op=editarUsuario',
+            url: '../Ajax/CursoAjax.php?op=editarCurso',
             data: datos,
             cache: false,
             processData: false,
@@ -106,27 +92,27 @@ function editarUsuario() {
                 if (e == 'ok') {
                 Swal.fire(
                     'Mensaje del sistema',
-                    'Usuario actualizado correctamente',
+                    'Curso actualizado correctamente',
                     'success'
                 );
                 limpiarFormulario();
                 }else{
                     Swal.fire(
                         'Mensaje del sistema',
-                        'No se pudo actualizar el usuario',
+                        'No se pudo actualizar el curso',
                         'error'
                     );
                 }
-                console.log(e);
+                // console.log(e);
             }
         });
     }
 }
 
-function eliminarUsuario(idUsuario) {
+function eliminarCurso(idCurso) {
 
     Swal.fire({
-        title: '¿Quieres eliminar este usuario?',
+        title: '¿Quieres eliminar este Curso?',
         text: "Esta acción no se puede revertir",
         icon: 'warning',
         showCancelButton: true,
@@ -135,19 +121,19 @@ function eliminarUsuario(idUsuario) {
         confirmButtonText: 'Sí, eliminar'
       }).then((result) => {
         if (result.isConfirmed) {
-            $.post("../Ajax/UsuarioAjax.php?op=eliminarUsuario", {idUsuario: idUsuario}, function (r) {
+            $.post("../Ajax/CursoAjax.php?op=eliminarCurso", {idCurso: idCurso}, function (r) {
                 if (r == 'ok') {    
                     Swal.fire(
                         'Mensaje del sistema',
-                        'Usuario eliminado correctamente',
+                        'Curso eliminado correctamente',
                         'success'
                       );
-                      listarUsuario();
-                    //   window.location.href = '../View/Usuario.php';
+                      listarCurso();
+                    //   window.location.href = '../View/Curso.php';
                 }else{
                     Swal.fire(
                         'Mensaje del sistema',
-                        'No se pudo eliminar el usuario',
+                        'No se pudo eliminar el curso',
                         'error'
                       );
                 }
@@ -159,6 +145,6 @@ function eliminarUsuario(idUsuario) {
 
 function limpiarFormulario() {
     $(".form-control").val("");
-    $("#slRol").val('0');
+    $("#idCurso").val("");
 }
 

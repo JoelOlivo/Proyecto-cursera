@@ -53,8 +53,8 @@ include '../Includes/Aside.php';
                                 <input name="NombreDos" type="text" class="form-control" id="txtNombreDos" placeholder="Ingresa un nombre">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
+                 
+                  
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="txtApellidoUno">Primer Apellido *</label>
@@ -67,8 +67,7 @@ include '../Includes/Aside.php';
                                 <input name="ApellidoDos" type="text" class="form-control" id="txtApellidoDos" placeholder="Ingresa un apellido">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
+                
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="txtEmail">Email *</label>
@@ -81,8 +80,7 @@ include '../Includes/Aside.php';
                                 <input name="Contrasenia" type="password" class="form-control" id="txtContrasenia" placeholder="*****************">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
+                  
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="txtCedula">Cédula</label>
@@ -101,8 +99,7 @@ include '../Includes/Aside.php';
                                 <input name="Pais" type="text" class="form-control" id="txtPais" placeholder="Ingresa un país">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
+                 
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="txtCiudad">Ciudad</label>
@@ -121,9 +118,8 @@ include '../Includes/Aside.php';
                                 <input name="Direccion" type="text" class="form-control" id="txtDireccion" placeholder="Ingresa una dirección">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
+                  
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="slRol">Rol *</label>
                                 <select name="Rol" class="custom-select" id="slRol">
@@ -132,6 +128,16 @@ include '../Includes/Aside.php';
                                     <option value="2">Instructor</option>
                                     <option value="3">Alumno</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="fileFoto">Foto</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" id="fileFoto" name="Foto">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

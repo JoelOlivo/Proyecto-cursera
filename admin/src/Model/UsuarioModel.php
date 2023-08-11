@@ -39,23 +39,26 @@ class Usuario{
         $direccion = $datos['Direccion'];
         $fechaRegistro = date("Y-m-d h:i:s");
         $rol = $datos['Rol'];
+        $foto = $datos['Foto'];
 
         $query = $conexion->prepare("INSERT INTO USUARIO 
         (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, cedula, email, 
-        contrasenia, celular, pais, ciudad, codigo_postal, direccion, fecha_registro, id_rol) 
+        contrasenia, celular, pais, ciudad, codigo_postal, direccion, fecha_registro, id_rol, foto) 
         VALUES
-        (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
-        $query->bind_param('sssssssssssssi',$primerNombre,$segundoNombre,$primerApellido,$segundoApellido,$cedula,$email,$contrasenia,$celular, $pais,$ciudad,$codigoPostal,$direccion,$fechaRegistro,$rol);
+        $query->bind_param('sssssssssssssis',$primerNombre,$segundoNombre,$primerApellido,$segundoApellido,$cedula,$email,$contrasenia,$celular, $pais,$ciudad,$codigoPostal,$direccion,$fechaRegistro,$rol,$foto);
 
         $query->execute();
 
+        // var_dump($query);
         if ($query) {
             echo "ok";
         }else {
             echo "error";
         }
 
+        // var_dump($foto);
         $conexion->close();
     }
 
@@ -90,9 +93,14 @@ class Usuario{
         $direccion = $datos['Direccion'];
         $fechaModificacion = date("Y-m-d h:i:s");
         $rol = $datos['Rol'];
+        $foto = $datos['Foto'];
 
-        $query = "UPDATE USUARIO SET primer_nombre = '$primerNombre', segundo_nombre = '$segundoNombre', primer_apellido = '$primerApellido',segundo_apellido = '$segundoApellido', cedula = '$cedula', email = '$email', contrasenia = '$contrasenia', celular = '$celular', pais = '$pais', ciudad = '$ciudad', codigo_postal = '$codigoPostal', direccion = '$direccion', fecha_modificacion = '$fechaModificacion', id_rol = '$rol' WHERE id_usuario = $id";
-
+        if ($foto == '../Img/') {
+            $query = "UPDATE USUARIO SET primer_nombre = '$primerNombre', segundo_nombre = '$segundoNombre', primer_apellido = '$primerApellido',segundo_apellido = '$segundoApellido', cedula = '$cedula', email = '$email', contrasenia = '$contrasenia', celular = '$celular', pais = '$pais', ciudad = '$ciudad', codigo_postal = '$codigoPostal', direccion = '$direccion', fecha_modificacion = '$fechaModificacion', id_rol = '$rol' WHERE id_usuario = $id";
+        } else {
+            $query = "UPDATE USUARIO SET primer_nombre = '$primerNombre', segundo_nombre = '$segundoNombre', primer_apellido = '$primerApellido',segundo_apellido = '$segundoApellido', cedula = '$cedula', email = '$email', contrasenia = '$contrasenia', celular = '$celular', pais = '$pais', ciudad = '$ciudad', codigo_postal = '$codigoPostal', direccion = '$direccion', fecha_modificacion = '$fechaModificacion', id_rol = '$rol', foto = '$foto' WHERE id_usuario = $id";    
+        }
+        
         $sql = mysqli_query($conexion, $query);
 
         if ($sql) {

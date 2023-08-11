@@ -25,6 +25,17 @@ switch ($op) {
 
     case 'guardarUsuario':
 
+        $nombreFoto = $_FILES['Foto']['name'];
+        $temporal = $_FILES['Foto']['tmp_name'];
+        $carpeta = '../Img';
+        $ruta = $carpeta . '/' . $nombreFoto; 
+        move_uploaded_file($temporal, $carpeta . '/' . $nombreFoto);
+
+        // $tipo = $foto['type'];
+        // $ruta = $foto['tmp_name'];
+        // $carpeta = '../Imagenes';
+        // $rutafin = $carpeta.$nombre;
+        // $imagen = '../Imagenes'.$nombre;
         $datos = [
             'NombreUno'=> $_POST['NombreUno'],
             'NombreDos'=> $_POST['NombreDos'],
@@ -38,8 +49,11 @@ switch ($op) {
             'Ciudad'=> $_POST['Ciudad'],
             'CodigoPostal'=> $_POST['CodigoPostal'],
             'Direccion'=> $_POST['Direccion'],
-            'Rol'=> $_POST['Rol']
+            'Rol'=> $_POST['Rol'],
+            'Foto' => $ruta
         ];
+
+        // echo $ruta;
 
         $row = $obj->guardarUsuario($datos);
         break;
@@ -52,9 +66,33 @@ switch ($op) {
         case 'editarUsuario':
 
             $id = $_POST["idUsuario"];
-            parse_str($_POST['datos'], $datosArray);
-            $row = $obj->editarUsuario($datosArray, $id);
-                
+            
+            $nombreFoto = $_FILES['Foto']['name'];
+            $temporal = $_FILES['Foto']['tmp_name'];
+            $type = $_FILES['Foto']['type'];
+            $carpeta = '../Img';
+            $ruta = $carpeta . '/' . $nombreFoto; 
+            move_uploaded_file($temporal, $carpeta . '/' . $nombreFoto);
+
+            $datos = [
+                'NombreUno'=> $_POST['NombreUno'],
+                'NombreDos'=> $_POST['NombreDos'],
+                'ApellidoUno'=> $_POST['ApellidoUno'],
+                'ApellidoDos'=> $_POST['ApellidoDos'],
+                'Email'=> $_POST['Email'],
+                'Contrasenia'=> $_POST['Contrasenia'],
+                'Cedula'=> $_POST['Cedula'],
+                'Celular'=> $_POST['Celular'],
+                'Pais'=> $_POST['Pais'],
+                'Ciudad'=> $_POST['Ciudad'],
+                'CodigoPostal'=> $_POST['CodigoPostal'],
+                'Direccion'=> $_POST['Direccion'],
+                'Rol'=> $_POST['Rol'],
+                'Foto' => $ruta
+            ];
+
+            $row = $obj->editarUsuario($datos, $id);
+            // var_dump($type);  
             break;
 
         case 'eliminarUsuario':
