@@ -37,8 +37,7 @@
     <link rel="stylesheet" href="../../plugins/bs-stepper/css/bs-stepper.min.css">
     <!-- dropzonejs -->
     <link rel="stylesheet" href="../../plugins/dropzone/min/dropzone.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+
     <!-- nosexd -->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css"> -->
     <!-- TOAST -->

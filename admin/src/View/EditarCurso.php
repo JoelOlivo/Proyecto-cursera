@@ -42,6 +42,7 @@ include '../Includes/Aside.php';
               $obj = new Curso;
               $id = $_GET['id'];
               $row = $obj->cargarCurso($id);
+              $categorias = $obj->cargarCategorias($id);
               ?>
               <!-- form start -->
               <form id="frmCrearCurso">
@@ -72,10 +73,22 @@ include '../Includes/Aside.php';
                                 <input name="Duracion" type="text" class="form-control" id="txtDuracion" placeholder="Ingresa la duracion" value="<?php echo $row["duracion"]; ?>">
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="slCategoria">Categoría *</label>
+                                <select class="custom-select" name="categorias[]" id="slCategoria" multiple>
+                                  <?php
+                                     foreach ($categorias as $categoria) {
+                                      echo '<option value="' . $categoria['id_Categoria'] . '" selected>' . $categoria['nombre_categoria'] . '</option>';
+                                  }
+                                  ?>
+                                </select>
+                            </div>
+                        </div>
                 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="fileMiniatura">Miniatura *</label>
+                                <label for="fileMiniatulllra">Miniatura</label>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" id="fileMiniatura" name="Miniatura">

@@ -1,9 +1,13 @@
 $(document).ready(function(){
-    //código a ejecutar cuando el DOM está listo para recibir instrucciones.
     listarCurso();
+    listarCategorias();
     $("#btnCrear").click(guardarCurso);
     $("#btnEditar").click(editarCurso);
-    
+
+    $("#slCategoria").select2({
+        tags: true, 
+        tokenSeparators: [',', ' ']
+    });
 
 });
 
@@ -22,8 +26,11 @@ function guardarCurso() {
     var precio = $("#txtPrecio").val();
     var foto = $("#fileMiniatura").val();
     var datos = new FormData($("#frmCrearCurso")[0]);
+    var categorias = $("select[name='categorias[]']").val();
 
-    if (nombre.trim() == '' || descripcion.trim() == '' || precio.trim() == '' || foto == '') {
+    datos.append('categorias', categorias);
+
+    if (nombre.trim() == '' || descripcion.trim() == '' || precio.trim() == '' || foto == '' || $("select[name='categorias[]']").val() == '') {
         $.toast({
             heading: 'Error',
             text: 'Llenar los campos obligatorios. (*)',
@@ -32,7 +39,6 @@ function guardarCurso() {
             icon: 'error'
         })
     }else{
-
         $.ajax({
             method: 'post',
             url: '../Ajax/CursoAjax.php?op=guardarCurso',
@@ -41,13 +47,15 @@ function guardarCurso() {
             processData: false,
             contentType: false,
             success: (e)=>{
-                if (e == 'ok') {
-                Swal.fire(
-                    'Mensaje del sistema',
-                    'Curso agregado correctamente',
-                    'success'
-                );
-                limpiarFormulario();
+                // console.log(e);
+                var r = e.replace(/(\r\n|\n|\r)/gm, '');
+                if (r == 'ok') {
+                    Swal.fire(
+                        'Mensaje del sistema',
+                        'Curso agregado correctamente',
+                        'success'
+                    );
+                    limpiarFormulario();
                 }else{
                     Swal.fire(
                         'Mensaje del sistema',
@@ -55,10 +63,10 @@ function guardarCurso() {
                         'error'
                     );
                 }
-                // console.log(e);
             }
         });  
     }
+    // console.log(datos);
 }
 
 function editarCurso() {
@@ -68,11 +76,13 @@ function editarCurso() {
     var descripcion = $("#txtDescripcion").val();
     var precio = $("#txtPrecio").val();
     var foto = $("#fileFoto").val();
+    var categorias = $("select[name='categorias[]']").val();
     var datos = new FormData($("#frmCrearCurso")[0]);
 
+    datos.append('categorias', categorias);
     datos.append('idCurso', idCurso);
     
-    if (nombre.trim() == '' || descripcion.trim() == '' || precio.trim() == '') {
+    if (nombre.trim() == '' || descripcion.trim() == '' || precio.trim() == '' || $("select[name='categorias[]']").val() == '') {
         $.toast({
             heading: 'Error',
             text: 'Llenar los campos obligatorios. (*)',
@@ -89,7 +99,8 @@ function editarCurso() {
             processData: false,
             contentType: false,
             success: (e)=>{
-                if (e == 'ok') {
+                var r = e.replace(/(\r\n|\n|\r)/gm, '');
+                if (r == 'ok') {
                 Swal.fire(
                     'Mensaje del sistema',
                     'Curso actualizado correctamente',
@@ -103,7 +114,7 @@ function editarCurso() {
                         'error'
                     );
                 }
-                // console.log(e);
+                console.log(r);
             }
         });
     }
@@ -122,7 +133,8 @@ function eliminarCurso(idCurso) {
       }).then((result) => {
         if (result.isConfirmed) {
             $.post("../Ajax/CursoAjax.php?op=eliminarCurso", {idCurso: idCurso}, function (r) {
-                if (r == 'ok') {    
+                var e = r.replace(/(\r\n|\n|\r)/gm, '');
+                if (e == 'ok') {    
                     Swal.fire(
                         'Mensaje del sistema',
                         'Curso eliminado correctamente',
@@ -137,12 +149,33 @@ function eliminarCurso(idCurso) {
                         'error'
                       );
                 }
+                // console.log(r);
             });
         }
       })
     // console.log(idUsuario1);
 }
 
+function listarCategorias() {
+
+    $.post("../Ajax/CursoAjax.php?op=listarCategorias", function (r) {
+        // console.log(r);
+        $("#slCategoria").html(r);
+        
+    });
+}
+
+function listarCategoriasSeleccionadas() {
+
+    var categoriasSeleccionadas = [1, 3, 5]; // Ejemplo, reemplaza con tus datos reales
+
+    
+    $("#slCategoria").select2({
+        tags: true, 
+        tokenSeparators: [',', ' '],
+        data: categoriasSeleccionadas // Establece las opciones previamente seleccionadas
+    });
+}
 function limpiarFormulario() {
     $(".form-control").val("");
     $("#idCurso").val("");

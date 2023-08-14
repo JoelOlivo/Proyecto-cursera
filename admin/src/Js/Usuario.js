@@ -5,7 +5,7 @@ $(document).ready(function(){
     $("#btnEditar").click(editarUsuario);
     
 
-}); x
+}); 
 
 function listarUsuario() {
 

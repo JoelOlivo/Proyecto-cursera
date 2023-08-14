@@ -53,20 +53,26 @@ include '../Includes/Aside.php';
                                 <textarea class="form-control" rows="3" placeholder="Ingresa una descripción" name="Descripcion" id="txtDescripcion"></textarea>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label for="txtPrecio">Precio *</label>
                                 <input name="Precio" type="text" class="form-control" id="txtPrecio" placeholder="Ingresa el precio">
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label for="txtDuracion">Duracion</label>
                                 <input name="Duracion" type="text" class="form-control" id="txtDuracion" placeholder="Ingresa la duracion">
                             </div>
                         </div>
-                
-                        <div class="col-md-4">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="slCategoria">Categoría *</label>
+                                <select class="custom-select" name="categorias[]" id="slCategoria" multiple>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="fileMiniatura">Miniatura *</label>
                                 <div class="input-group">

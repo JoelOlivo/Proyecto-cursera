@@ -33,16 +33,20 @@ switch ($op) {
         $ruta = $carpeta . '/' . $nombreFoto; 
         move_uploaded_file($temporal, $carpeta . '/' . $nombreFoto);
 
+        $categorias = explode(",", $_POST['categorias']);
+
         $datos = [
             'Nombre'=> $_POST['Nombre'],
             'Descripcion'=> $_POST['Descripcion'],
             'Precio'=> $_POST['Precio'],
             'Duracion'=> $_POST['Duracion'],
-            'Miniatura' => $ruta
-        ];
+            'Miniatura' => $ruta,
+            'Categorias' => $categorias    
+           ];
 
         // var_dump($datos);
         $row = $obj->guardarCurso($datos);
+
         break;
 
     case 'cargarCurso':
@@ -61,12 +65,15 @@ switch ($op) {
         $ruta = $carpeta . '/' . $nombreFoto; 
         move_uploaded_file($temporal, $carpeta . '/' . $nombreFoto);
 
+        $categorias = explode(",", $_POST['categorias']);
+
         $datos = [
             'Nombre'=> $_POST['Nombre'],
             'Descripcion'=> $_POST['Descripcion'],
             'Precio'=> $_POST['Precio'],
             'Duracion'=> $_POST['Duracion'],
-            'Miniatura' => $ruta
+            'Miniatura' => $ruta,
+            'Categorias' => $categorias    
         ];
 
         $row = $obj->editarCurso($datos, $id);
@@ -80,8 +87,20 @@ switch ($op) {
         $row = $obj->eliminarCurso($id);
         // var_dump($id);
         break;
+
+    case 'listarCategorias':
+        $row = $obj->listarCategorias();
+    
+        foreach ($row as $key => $value) {
+            echo '<option value="' . $value['id_categoria'] .'">' . $value['nombre'] .'</option>';
+        }
+        break;
+
+    
 }
 
 
 
 ?>
+
+
