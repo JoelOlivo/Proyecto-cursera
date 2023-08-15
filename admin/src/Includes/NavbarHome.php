@@ -21,7 +21,7 @@
                             <i class="fas fa-cart-plus"></i>
                             <span id="badgeProducto" class="badge badge-danger navbar-badge"></span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" >
+                        <div class="dropdown-menu dropdown-menu-right" >
                             <div id="divCarrito">
 
                             </div>

@@ -4,9 +4,9 @@
     <?php
     session_start();
     if (isset($_SESSION['id_usuario'])) {
-    echo '<script>alert("bienvenido guapo");</script>';
+
     }else {
-    echo '<script>alert("chau :v");
+    echo '<script>alert("Para continuar, inicia sesión");
     window.location.href = "login.php";
     </script>';
     }

@@ -137,7 +137,7 @@
 
 <script src="../Js/RegistrarUsuario.js"></script>
 <!-- footer -->
-<?php include '../Includes/Footer.php'; ?>
+<?php include '../Includes/FooterHome.php'; ?>
 <!-- footer -->
 
 

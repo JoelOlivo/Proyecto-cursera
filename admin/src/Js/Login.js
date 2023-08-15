@@ -13,7 +13,13 @@ function iniciarSesion() {
         if (r == 'ok') {    
             window.location = 'index.php';
         }else{
-            alert('contraseña o correo incorrecto bobo hpta');
+            $.toast({
+                heading: 'Error',
+                text: 'Credenciales incorrectas, intenta nuevamente.',
+                showHideTransition: 'fade',
+                position: 'top-right',
+                icon: 'error'
+            });
         }
     });  
     // alert(datos);

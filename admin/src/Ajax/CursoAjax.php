@@ -102,16 +102,16 @@ switch ($op) {
         foreach ($row as $key => $value) {
             echo ' 
             <div class="col-3">
-                <div class="card  border-primary">
-                    <img class=" img-thumbnail" src="' . $value['miniatura'] . '" alt="producto">
-                    <div class="card-body">
-                        <h4 class="card-title"><strong>' . $value['nombre_curso'] . '</strong></h4>
-                        <div class="card-text"><strong>Precio: </strong>' . $value['precio_curso'] . ' $</div>
-                        <div class="card-text"><strong>Duración: </strong>' . $value['duracion_curso'] . ' horas</div>
-                        <a href="#' . $value['id_curso'] .'" class="btn btn-primary">Comenzar</a>
+            <div class="card  border-primar h-100">
+                <img class="" src="' . $value['miniatura'] . '" alt="producto" height="200px" >
+                <div class="card-body">
+                    <h4 class="card-title"><strong>' . $value['nombre_curso'] . '</strong></h4>
+                    <div class="card-text"><strong>Precio: </strong>' . $value['precio_curso'] . ' $</div>
+                    <div class="card-text"><strong>Duración: </strong>' . $value['duracion_curso'] . ' horas</div>
+                    <a href="#' . $value['id_curso'] .'" class="btn btn-primary">Comenzar</a>
                     </div>
-                </div>
-            </div>';
+            </div>
+        </div>';
         }
 
         break;
