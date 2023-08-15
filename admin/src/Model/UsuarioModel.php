@@ -14,7 +14,8 @@ class Usuario{
         R.nombre
         FROM USUARIO U 
         INNER JOIN ROL R
-        ON U.id_rol = R.id_rol");
+        ON U.id_rol = R.id_rol
+        ORDER BY R.id_rol ASC");
         $row = $query->fetch_all(MYSQLI_ASSOC);
         $conexion->close();
 

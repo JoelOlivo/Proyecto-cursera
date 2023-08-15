@@ -56,13 +56,13 @@ include '../Includes/Aside.php';
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="txtPrecio">Precio *</label>
-                                <input name="Precio" type="text" class="form-control" id="txtPrecio" placeholder="Ingresa el precio">
+                                <input name="Precio" type="number" step="any" class="form-control" id="txtPrecio" placeholder="Ingresa el precio">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="txtDuracion">Duracion</label>
-                                <input name="Duracion" type="text" class="form-control" id="txtDuracion" placeholder="Ingresa la duracion">
+                                <label for="txtDuracion">Duracion (horas)</label>
+                                <input name="Duracion" type="number" class="form-control" id="txtDuracion" placeholder="Ingresa la duracion">
                             </div>
                         </div>
                         <div class="col-md-6">

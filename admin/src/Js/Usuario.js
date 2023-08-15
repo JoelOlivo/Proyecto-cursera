@@ -151,6 +151,7 @@ function eliminarUsuario(idUsuario) {
                         'error'
                       );
                 }
+                // console.log(r);
             });
         }
       })
