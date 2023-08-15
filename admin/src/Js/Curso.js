@@ -1,14 +1,20 @@
+// var categorias = new Array();
 $(document).ready(function(){
     listarCurso();
-    listarCategorias();
     $("#btnCrear").click(guardarCurso);
     $("#btnEditar").click(editarCurso);
-
-    $("#slCategoria").select2({
+    
+    $("select[name='categorias[]']").select2({
         tags: true, 
         tokenSeparators: [',', ' ']
     });
+    $("#slCategoria").click(listarCategorias);
 
+    // var idCurso = $("#idCurso").val();
+    // if (idCurso == null) {
+    // }
+    // alert(idCurso);
+    
 });
 
 function listarCurso() {
@@ -114,7 +120,7 @@ function editarCurso() {
                         'error'
                     );
                 }
-                console.log(r);
+                // console.log(r);
             }
         });
     }
@@ -165,19 +171,26 @@ function listarCategorias() {
     });
 }
 
-function listarCategoriasSeleccionadas() {
+// function listarCategoriasSeleccionadas() {
 
-    var categoriasSeleccionadas = [1, 3, 5]; // Ejemplo, reemplaza con tus datos reales
+//     $.post("../Ajax/CursoAjax.php?op=listarCategorias", function (r) {
+//         // console.log(r);
+//         $("#slCategoria").html(r);    
+//         $("select[name='categorias[]']").select2({
+//             tags: true, 
+//             tokenSeparators: [',', ' '],
+//             data: r // Establece las opciones previamente seleccionadas
+//         });
+//     });
+
+//     var categoriasSeleccionadas = [1, 3, 5]; // Ejemplo, reemplaza con tus datos reales
 
     
-    $("#slCategoria").select2({
-        tags: true, 
-        tokenSeparators: [',', ' '],
-        data: categoriasSeleccionadas // Establece las opciones previamente seleccionadas
-    });
-}
+    
+// }
 function limpiarFormulario() {
     $(".form-control").val("");
+    $("select[name='categorias[]']").val('');
     $("#idCurso").val("");
 }
 

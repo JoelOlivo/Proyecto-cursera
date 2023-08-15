@@ -87,6 +87,7 @@ switch ($op) {
   case 'cargarCarrito':
 
     $productos = unserialize($_COOKIE['productos'] ?? '');
+    if (is_array($productos) == false) $productos = array();
     $precio = 0;
     $table = '';
     foreach ($productos as $key => $value) {
@@ -103,9 +104,11 @@ switch ($op) {
 
     $table .= ' 
         <tr>
-        <td colspan="2" align="right">TOTAL</td>
+        <td colspan="2" align="right"><strong>TOTAL</strong></td>
         <td>' . $precio . ' $</td>
-    </tr>';
+        </tr>
+        <input type="hidden" id="totalCompra" value="' . $precio . '">
+        ';
 
     echo $table;
     break;
@@ -160,9 +163,10 @@ switch ($op) {
     }
 
     $table .= ' 
-        <tr>
+        <tr>totalCompra
         <td colspan="2" align="right">TOTAL</td>
-        <td>' . $precio . ' $</td>
+        <td id="totalCompra">' . $precio . ' $</td>
+        <input type="hidden" id="totalCompra" value="' . $precio . '">
     </tr>';
 
     echo $table;
@@ -172,7 +176,8 @@ switch ($op) {
 
       $productos = unserialize($_COOKIE['productos'] ?? '');
       setcookie('productos', serialize($productos));
-  
+      if (is_array($productos) == false) $productos = array();
+
       foreach ($productos as $key => $value) {
         echo '<a href="../View/CursoPrevio.php?id=' . $value['id'] . '" class="dropdown-item">
             <!-- Message Start -->
@@ -189,5 +194,46 @@ switch ($op) {
         </a>
         <div class="dropdown-divider"></div>';
       }
+      break;
+
+    case 'cargarDivCarrito':
+
+      $productos = unserialize($_COOKIE['productos'] ?? '');
+      setcookie('productos', serialize($productos));
+      if (is_array($productos) == false) $productos = array();
+
+      foreach ($productos as $key => $value) {
+        echo '<a href="../View/CursoPrevio.php?id=' . $value['id'] . '" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+                <img src="' . $value['foto'] . '" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                <div class="media-body">
+                    <h3 class="dropdown-item-title">
+                    ' . $value['nombre'] . '
+                      <span class="float-right text-sm text-primary"><i class="fas fa-eye"></i></span>
+                    </h3>
+                </div>
+            </div>
+            <!-- Message End -->
+        </a>
+        <div class="dropdown-divider"></div>';
+      }
+        break;
+
+    case 'comprarProducto':
+      $productos = unserialize($_COOKIE['productos'] ?? '');
+      // setcookie('productos', serialize($productos));
+      if (is_array($productos) == false) $productos = array();
+
+      $idProductos = array();
+      $total = 0;
+      foreach ($productos as $key => $value) {
+        $total = $total + $value['precio'];
+        $idProductos[] = $value['id']; 
+      }
+      $row = $obj->comprarProducto($idProductos, $total);
+
+
+      // echo json_encode($idProductos);
       break;
 }

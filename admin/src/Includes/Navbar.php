@@ -8,9 +8,6 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="../View/index.php" class="nav-link">Home</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
     </ul>
 
     <!-- Right navbar links -->
@@ -28,14 +25,28 @@
           <i class="far fa-user"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <span class="dropdown-item dropdown-header"><?php echo $_SESSION['nombre']; ?></span>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
+          <?php
+            if ($_SESSION['rol'] == 1) {
+          ?>
+          <a href="../View/Usuario.php" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> Usuarios
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
+          <?php
+            }
+            if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {
+          ?>
+          <a href="../View/Cursos.php" class="dropdown-item">
+            <i class="fas fa-chalkboard mr-2"></i> Cursos
+          </a>
+          <div class="dropdown-divider"></div>
+          <?php
+            }
+          ?>
+          <a href="../View/MisCursos.php" class="dropdown-item">
+            <i class="fas fa-chalkboard mr-2"></i> Mis Cursos
           </a>
           <div class="dropdown-divider"></div>
           <button type="button" id="btnCerrarSesion" class="dropdown-item text-danger">

@@ -129,6 +129,47 @@ class Usuario{
 
         $conexion->close();
     }
+
+    public static function registrarUsuario($datos){
+        $conexion = new Conexion;
+        $conexion = $conexion->conectar();
+
+        $primerNombre = $datos['NombreUno'];
+        $segundoNombre = $datos['NombreDos'];
+        $primerApellido = $datos['ApellidoUno'];
+        $segundoApellido = $datos['ApellidoDos'];
+        $email = $datos['Email'];
+        $contrasenia = $datos['Contrasenia'];
+        $cedula = $datos['Cedula'];
+        $celular = $datos['Celular'];
+        $pais = $datos['Pais'];
+        $ciudad = $datos['Ciudad'];
+        $codigoPostal = $datos['CodigoPostal'];
+        $direccion = $datos['Direccion'];
+        $fechaRegistro = date("Y-m-d h:i:s");
+        $rol = 3;
+        $foto = $datos['Foto'];
+
+        $query = $conexion->prepare("INSERT INTO USUARIO 
+        (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, cedula, email, 
+        contrasenia, celular, pais, ciudad, codigo_postal, direccion, fecha_registro, id_rol, foto) 
+        VALUES
+        (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+        $query->bind_param('sssssssssssssis',$primerNombre,$segundoNombre,$primerApellido,$segundoApellido,$cedula,$email,$contrasenia,$celular, $pais,$ciudad,$codigoPostal,$direccion,$fechaRegistro,$rol,$foto);
+
+        $query->execute();
+
+        // var_dump($query);
+        if ($query) {
+            echo "ok";
+        }else {
+            echo "error";
+        }
+
+        // var_dump($foto);
+        $conexion->close();
+    }
 }
 
 ?>

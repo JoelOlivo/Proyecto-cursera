@@ -14,6 +14,9 @@ $(document).ready(function(){
         } 
     });
     verCarrito();
+    $("#btnComprar").click(comprarProducto);
+
+
 });
 
 function cargarImagen() {
@@ -59,8 +62,7 @@ function agregarCarrito() {
 
 }
 
-function vaciarCarrito(e) {
-    e.preventDefault();
+function vaciarCarrito() {
     $.ajax({
         type: "post",
         url: "../Ajax/CursoPrevioAjax.php?op=vaciarCarrito",
@@ -96,7 +98,35 @@ function borrarProductoCarrito(id) {
             // console.log(r);
             $("#tblCarrito").html(r); 
         }
-});
+    });
+}
+
+function comprarProducto() {
+   
+    $.ajax({
+        type: "post",
+        url: "../Ajax/CursoPrevioAjax.php?op=comprarProducto",
+        // dataType: "json",
+        success: function (r) {
+            console.log(r);
+            if (r == 'ok') {    
+                Swal.fire(
+                    'Mensaje del sistema',
+                    'Curso comprado correctamente',
+                    'success'
+                  );
+                  vaciarCarrito();
+                //   listarCurso();
+                //   window.location.href = '../View/Curso.php';
+            }else{
+                Swal.fire(
+                    'Mensaje del sistema',
+                    'No se pudo eliminar el curso',
+                    'error'
+                  );
+            }       
+        }
+    });
 }
 
 

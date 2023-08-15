@@ -79,10 +79,11 @@ include '../Includes/Aside.php';
                                 <select class="custom-select" name="categorias[]" id="slCategoria" multiple>
                                   <?php
                                      foreach ($categorias as $categoria) {
-                                      echo '<option value="' . $categoria['id_Categoria'] . '" selected>' . $categoria['nombre_categoria'] . '</option>';
-                                  }
-                                  ?>
-                                </select>
+                                      echo '<option value="' . $categoria['id_Categoria'] . '" selected>' . $categoria['nombre_categoria'] . '</option>
+                                      ';
+                                    }
+                                    ?>
+                                </select>                                
                             </div>
                         </div>
                 

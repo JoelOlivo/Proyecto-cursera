@@ -11,7 +11,7 @@
 
     <!-- Navbar -->
     <?php
-      include '../Includes/NavbarHome.php';
+    include '../Includes/NavbarHome.php';
     ?>
     <!-- /.navbar -->
 
@@ -25,10 +25,6 @@
         <div class="card-body">
           <div class="row">
             <div class="col-12 col-sm-6" id="divImagen">
-              <div class="col-12">
-                <!-- <img src="../../dist/img/prod-1.jpg" class="product-image" alt="Product Image"> -->
-              </div>
-
             </div>
             <div class="col-12 col-sm-6">
               <div id="divDescripcion">
@@ -37,7 +33,7 @@
               <div class="mt-4">
                 <button type="button" id="btnAgregarCarrito" class="btn btn-primary btn-lg btn-flat">
                   <i class="fas fa-cart-plus fa-lg mr-2"></i>
-                  Add to Cart
+                  Añadir al carrito
                 </button>
               </div>
             </div>
@@ -63,6 +59,7 @@
       })
     </script>
     <script src="../Js/CursoPrevio.js"></script>
+  </div>
     <!-- footer -->
-    <?php include '../Includes/Footer.php'; ?>
+    <?php include '../Includes/FooterHome.php'; ?>
     <!-- footer -->

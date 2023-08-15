@@ -42,6 +42,10 @@
         </div>
         <div class="col-12">
           <button type="button" class="btn btn-primary btn-block" id="btnlogin">Iniciar sesión</button>
+          <br>
+        </div>
+        <div class="col-12" align="center">
+          <p>¿No tienes una cuenta? <a href="RegistrarUsuario.php" class="text-green">Regístrate aquí</a></p>
         </div>
       </form>
     </div>

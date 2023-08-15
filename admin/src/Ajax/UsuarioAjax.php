@@ -100,6 +100,36 @@ switch ($op) {
             $row = $obj->eliminarUsuario($id);
             // var_dump($id);
             break;
+
+        case 'registrarUsuario':
+
+            $nombreFoto = $_FILES['Foto']['name'];
+            $temporal = $_FILES['Foto']['tmp_name'];
+            $carpeta = '../Img';
+            $ruta = $carpeta . '/' . $nombreFoto; 
+            move_uploaded_file($temporal, $carpeta . '/' . $nombreFoto);
+    
+            $datos = [
+                'NombreUno'=> $_POST['NombreUno'],
+                'NombreDos'=> $_POST['NombreDos'],
+                'ApellidoUno'=> $_POST['ApellidoUno'],
+                'ApellidoDos'=> $_POST['ApellidoDos'],
+                'Email'=> $_POST['Email'],
+                'Contrasenia'=> $_POST['Contrasenia'],
+                'Cedula'=> $_POST['Cedula'],
+                'Celular'=> $_POST['Celular'],
+                'Pais'=> $_POST['Pais'],
+                'Ciudad'=> $_POST['Ciudad'],
+                'CodigoPostal'=> $_POST['CodigoPostal'],
+                'Direccion'=> $_POST['Direccion'],
+                'Foto' => $ruta
+            ];
+    
+            // echo $ruta;
+    
+            $row = $obj->registrarUsuario($datos);
+            break;
+        
 }
 
 

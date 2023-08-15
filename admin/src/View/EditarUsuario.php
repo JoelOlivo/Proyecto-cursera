@@ -162,7 +162,7 @@ include '../Includes/Aside.php';
                           </div>
                         </div>
                         <?php 
-                        if (is_null($row["foto"])) { 
+                        if ($row['foto'] == '../Img/' || $row['foto'] == null) {
                         ?>
                         <div class="col-md-2">
                           <div class="form-group">

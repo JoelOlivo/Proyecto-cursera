@@ -245,6 +245,56 @@ class Curso{
         // var_dump($row);
     }
 
+    public static function comprarProducto($productos, $total){
+        $conexion = new Conexion;
+        $conexion = $conexion->conectar();
+
+        $fechaCompra = date("Y-m-d h:i:s");
+        $idCliente =  $_SESSION['id_usuario'];
+        
+        $query="INSERT INTO COMPRA (id_usuario, fecha_compra) VALUES ('$idCliente', '$fechaCompra')";
+        $sql = mysqli_query($conexion, $query);
+        $ultimoId = mysqli_insert_id($conexion);
+
+        if ($sql) {
+            foreach ($productos as $producto) {
+                $queryProductos = $conexion->prepare("INSERT INTO COMPRA_CURSO (id_compra, id_curso, total)VALUES
+                (?, ?, ?)");    
+                $queryProductos->bind_param('iii',$ultimoId,$producto,$total);
+                $queryProductos->execute();
+            }
+            echo "ok";
+        }else {
+            echo "error";
+        }
+    }
+
+    public static function listarMisCursos(){
+        $conexion = new Conexion;
+        $conexion = $conexion->conectar();
+
+        $usuario = $_SESSION['id_usuario'];
+        $query = $conexion->query("SELECT 
+        CO.id_compra,
+        CO.id_usuario,
+        CC.id_curso,
+        CU.nombre as nombre_curso,
+        CU.descripcion as descripcion_curso,
+        CU.precio as precio_curso,
+        CU.duracion as duracion_curso,
+        CU.foto as miniatura
+        FROM COMPRA CO
+        INNER JOIN COMPRA_CURSO CC ON CC.id_compra = CO.id_compra
+        INNER JOIN CURSO CU ON CU.id_curso = CC.id_curso 
+        WHERE CO.id_usuario = '$usuario'
+        ");
+        $row = $query->fetch_all(MYSQLI_ASSOC);
+        $conexion->close();
+        return $row;    
+    }
+
+
+
 
 }
 

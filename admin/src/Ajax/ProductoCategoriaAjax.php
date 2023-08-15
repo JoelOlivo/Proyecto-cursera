@@ -39,9 +39,9 @@ switch ($op) {
 
         if ($id == '' || $id == null || empty($id)) {
             echo ' 
-            <h1 align="center">Todos nuestros cursos</h1>
+            <h1 align="center">Explora Nuestros Cursos</h1>
             <br>
-            <h5>bla bla lbasdsadsad</h5>
+            <h5>Explora nuestros cursos y sumérgete en el emocionante mundo de la tecnología. Desde programación hasta inteligencia artificial, nuestros cursos te brindan las habilidades que necesitas para prosperar en la era digital. Aprende a tu ritmo y conviértete en un experto con Cursera.</h5>
             <hr>';
         }else {
 

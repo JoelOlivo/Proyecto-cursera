@@ -17,4 +17,9 @@
     <script src="../../plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="../../plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- TOAST -->
+    <link rel="stylesheet" href="../../dist/css/jquery.toast.min.css">
+    <?php
+    session_start();
+    ?>
 </head>
